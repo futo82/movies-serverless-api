@@ -1,0 +1,3 @@
+.dynamodb
+node_modules
+handlers/__pycache__
