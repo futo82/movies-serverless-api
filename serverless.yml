@@ -67,7 +67,7 @@ resources:
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
 
 plugins:
-#  - serverless-dynamodb-local
+  - serverless-dynamodb-local
   - serverless-offline
 
 custom:

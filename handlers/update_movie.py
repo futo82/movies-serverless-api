@@ -1,9 +1,11 @@
 import boto3
-from handlers import decimalencoder
 import json
 import os
 
-dynamodb = boto3.resource('dynamodb')
+from handlers import db
+from handlers import decimalencoder
+
+dynamodb = db.get_dynamodb_resource()
 
 def update(event, context):
     movie_id = event['pathParameters']['id']

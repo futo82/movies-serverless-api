@@ -1,10 +1,12 @@
 import boto3
 import decimal
-from handlers import decimalencoder
 import json
 import os
 
-dynamodb = boto3.resource('dynamodb')
+from handlers import db
+from handlers import decimalencoder
+
+dynamodb = db.get_dynamodb_resource()
 
 def create(event, context):
     data = json.loads(event['body'])

@@ -1,9 +1,11 @@
 import boto3
-from handlers import decimalencoder
 import json
 import os
 
-dynamodb = boto3.resource('dynamodb')
+from handlers import db
+from handlers import decimalencoder
+
+dynamodb = db.get_dynamodb_resource()
 
 def get(event, context):
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
