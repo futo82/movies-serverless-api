@@ -80,8 +80,14 @@ This command will install the plugins needed to run the Movies API on localhost.
 npm install serverless-offline serverless-dynamodb-local --save-dev
 ```
 
-This command will start DynamoDB, create the database table defined in serverless.yml,
+This script will start DynamoDB, create the database table defined in serverless.yml,
 and start the API Gateway to expose the Movies CRUD endpoints on the localhost.
 ```
-serverless offline start
+./run.sh
 ```
+
+## Resources
+[AWS Lambda Developer Documentation](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
+[AWS DynamoDB Developer Documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+[Boto3 API Reference](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/index.html)
+[Serverless Framework AWS Documentation](https://serverless.com/framework/docs/providers/aws/)
