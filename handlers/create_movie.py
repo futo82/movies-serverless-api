@@ -1,4 +1,6 @@
 import boto3
+import decimal
+from handlers import decimalencoder
 import json
 import os
 
@@ -14,12 +16,19 @@ def create(event, context):
         'release-date': data['release-date'],
         'revenue': data['revenue'],
         'runtime': data['runtime'],
-        'vote-average': data['vote-average'],
+        #'vote-average': data['vote-average'],
         'vote-count': data['vote-count'],
     }
-    table.put_item(Item=item)
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(item)
-    }
-    return response
+    try:
+        result = table.put_item(Item=item)
+        response = {
+            "statusCode": 200,
+            "body": json.dumps(result, cls=decimalencoder.DecimalEncoder)
+        }
+        return response
+    except Exception as e:
+        response = {
+            "statusCode": 500,
+            "body": str(e)
+        }
+        return response

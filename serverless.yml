@@ -23,25 +23,22 @@ functions:
     handler: handlers/create_movie.create
     events:
       - http:
-          path: movies
+          path: /v1/api/movies
           method: post
-          cors: true
   
   get_movie:
     handler: handlers/get_movie.get
     events:
       - http:
-          path: movies/{id}
+          path: /v1/api/movies/{id}
           method: get
-          cors: true
 
   delete_movie:
     handler: handlers/delete_movie.delete
     events:
       - http:
-          path: movies/{id}
+          path: /v1/api/movies/{id}
           method: delete
-          cors: true
 
 resources:
   Resources:
@@ -63,7 +60,7 @@ resources:
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
 
 plugins:
-  - serverless-dynamodb-local
+#  - serverless-dynamodb-local
   - serverless-offline
 
 custom:

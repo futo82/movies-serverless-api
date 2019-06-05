@@ -9,10 +9,10 @@ npm install -g serverless
 #### GET /v1/api/movies/{movie-id}
 
 ```
-curl -X GET http://hostname:port/movies/19995
+curl -X GET http://hostname:port/v1/api/movies/19995
 ```
 
-#### POST /movies
+#### POST /v1/api/movies
 
 ```
 curl -X POST \
@@ -30,7 +30,7 @@ curl -X POST \
 }'
 ```
 
-#### PUT /movies/{movie-id}
+#### PUT /v1/api/movies/{movie-id}
 
 ```
 curl -X PUT \
@@ -47,7 +47,7 @@ curl -X PUT \
 }'
 ```
 
-#### DELETE /movies/{movie-id}
+#### DELETE /v1/api/movies/{movie-id}
 
 ```
 curl -X DELETE http://hostname:port/v1/api/movies/19995 
