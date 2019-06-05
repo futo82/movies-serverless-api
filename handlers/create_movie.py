@@ -20,7 +20,11 @@ def create(event, context):
         'vote-count': data['vote-count'],
     }
     try:
-        result = table.put_item(Item=item)
+        result = table.put_item(
+            Item=item,
+            ExpressionAttributeNames={ "#m": "movie-id" },
+            ConditionExpression="attribute_not_exists(#m)"
+        )
         response = {
             "statusCode": 200,
             "body": json.dumps(result, cls=decimalencoder.DecimalEncoder)

@@ -78,5 +78,5 @@ npm install serverless-offline serverless-dynamodb-local --save-dev
 This command will start DynamoDB, create the databas table defined in server.yml,
 and start the API Gateway to expose the Movies CRUD endpoints on the localhost.
 ```
-serverless offline start -r us-east-1 --noTimeout
+serverless offline start
 ```
