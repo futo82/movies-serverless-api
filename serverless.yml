@@ -33,6 +33,13 @@ functions:
           path: /v1/api/movies/{id}
           method: get
 
+  update_movie:
+    handler: handlers/update_movie.update
+    events:
+      - http:
+          path: /v1/api/movies/{id}
+          method: put
+
   delete_movie:
     handler: handlers/delete_movie.delete
     events:
