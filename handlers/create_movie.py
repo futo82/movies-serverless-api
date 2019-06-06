@@ -1,10 +1,9 @@
-import boto3
-import decimal
 import json
 import os
 
 from handlers import db
 from handlers import decimalencoder
+from handlers import util
 
 dynamodb = db.get_dynamodb_resource()
 
@@ -18,7 +17,7 @@ def create(event, context):
         'release-date': data['release-date'],
         'revenue': data['revenue'],
         'runtime': data['runtime'],
-        #'vote-average': data['vote-average'],
+        'vote-average': util.round_float_to_decimal(data['vote-average']),
         'vote-count': data['vote-count'],
     }
     try:
