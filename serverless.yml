@@ -5,6 +5,8 @@ frameworkVersion: ">=1.0.0 <2.0.0"
 provider:
   name: aws
   runtime: python3.7
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
   environment:
     DYNAMODB_TABLE: Movies
   iamRoleStatements:

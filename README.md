@@ -2,7 +2,10 @@
 This example demostrates how to write a RESTful API in Python using the Serverless Framework to deploy into AWS cloud environment. The API provides a create, retrieve, update, and delete service that is used to operate on the movie data stored in DynamoDB.
 
 ## Prerequisites
-npm install -g serverless
+[Python 3](https://www.python.org/)
+[AWS CLI](https://aws.amazon.com/cli/)
+[NodeJS](https://nodejs.org/en/)
+[Serverless Framework](https://serverless.com/)
 
 ## API
 
@@ -84,6 +87,17 @@ This script will start DynamoDB, create the database table defined in serverless
 and start the API Gateway to expose the Movies CRUD endpoints on the localhost.
 ```
 ./run.sh
+```
+
+## Deploy to AWS
+This command is used when you have updated your Function, Event or Resource configuration in serverless.yml and you want to deploy that change (or multiple changes at the same time) to a particular stage in Amazon Web Services.
+```
+serverless deploy --stage <dev|int|uat|prod> --verbose
+```
+
+This command will remove the deployed service in the specified stage, defined in your current working directory, from the provider.
+```
+serverless remove --stage <dev|int|uat|prod>
 ```
 
 ## Resources
