@@ -2,13 +2,10 @@
 This example demostrates how to write a RESTful API in Python using the Serverless Framework to deploy into AWS cloud environment. The API provides a create, retrieve, update, and delete service that is used to operate on the movie data stored in DynamoDB.
 
 ## Prerequisites
-[Python 3](https://www.python.org/)
-
-[AWS CLI](https://aws.amazon.com/cli/)
-
-[NodeJS](https://nodejs.org/en/)
-
-[Serverless Framework](https://serverless.com/)
+* [Python 3](https://www.python.org/)
+* [AWS CLI](https://aws.amazon.com/cli/)
+* [NodeJS](https://nodejs.org/en/)
+* [Serverless Framework](https://serverless.com/)
 
 ## API
 
@@ -104,10 +101,7 @@ serverless remove --stage <dev|int|uat|prod>
 ```
 
 ## Resources
-[AWS Lambda Developer Documentation](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
-
-[AWS DynamoDB Developer Documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
-
-[Boto3 API Reference](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/index.html)
-
-[Serverless Framework AWS Documentation](https://serverless.com/framework/docs/providers/aws/)
+* [AWS Lambda Developer Documentation](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
+* [AWS DynamoDB Developer Documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+* [Boto3 API Reference](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/index.html)
+* [Serverless Framework AWS Documentation](https://serverless.com/framework/docs/providers/aws/)
