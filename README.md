@@ -3,8 +3,11 @@ This example demostrates how to write a RESTful API in Python using the Serverle
 
 ## Prerequisites
 [Python 3](https://www.python.org/)
+
 [AWS CLI](https://aws.amazon.com/cli/)
+
 [NodeJS](https://nodejs.org/en/)
+
 [Serverless Framework](https://serverless.com/)
 
 ## API
