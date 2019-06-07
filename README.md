@@ -1,5 +1,5 @@
 # Movies Serverless Restful API
-This example demostrates how to write a RESTful API in Python using the Serverless Framework to deploy into AWS cloud environment. The API provides a create, retrieve, update, and delete service that is used to operate on the movie data stored in DynamoDB.
+This example demostrates how to write a RESTful API in Python using the Serverless Framework and AWS Serverless Application Model (SAM) to deploy into the AWS cloud environment. The API provides a create, retrieve, update, and delete service that is used to operate on the movie data stored in DynamoDB.
 
 ## Prerequisites
 * [Python 3](https://www.python.org/)
