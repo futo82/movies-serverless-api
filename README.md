@@ -4,7 +4,7 @@ This example demostrates how to write a RESTful API in Python using the Serverle
 ## Prerequisites
 * [Python 3](https://www.python.org/)
 * [AWS CLI](https://aws.amazon.com/cli/)
-* [AWS SAM CLI] (https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
+* [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 * [NodeJS](https://nodejs.org/en/)
 * [Serverless Framework](https://serverless.com/)
 
