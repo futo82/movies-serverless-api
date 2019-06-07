@@ -115,7 +115,7 @@ sam package --template-file sam.yaml --output-template-file packaged.yaml --s3-b
 
 This command takes the packaged AWS SAM template file that was created and deploys the serverless application.
 ```
-aws cloudformation deploy --template-file ./packaged.yaml --stack-name movies-serverless-api-stack
+aws cloudformation deploy --template-file ./packaged.yaml --stack-name movies-serverless-api-stack --capabilities CAPABILITY_IAM
 ```
 
 This command delete the cloud formation stack and all of its resources.

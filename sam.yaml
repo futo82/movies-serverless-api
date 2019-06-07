@@ -3,17 +3,19 @@ Transform: AWS::Serverless-2016-10-31
 Description: Resource definitions for the Movies RESTful API
 
 Globals:
-  Runtime: python3.7
-  Timeout: 180
-  Environment:
-        Variables:
-            DYNAMODB_TABLE: Movies
-            REGION_NAME: us-east-1
+  Function:
+    Runtime: python3.7
+    Timeout: 180
+    Environment:
+      Variables:
+        DYNAMODB_TABLE: Movies
+        REGION_NAME: us-east-1
 
 Resources:
   CreateMovieFunction:
     Type: AWS::Serverless::Function
     Properties:
+      Runtime: python3.7
       Handler: handlers/create_movie.create
       Policies: AmazonDynamoDBFullAccess
       Events:
@@ -26,6 +28,7 @@ Resources:
   GetMovieFunction:
     Type: AWS::Serverless::Function
     Properties:
+      Runtime: python3.7
       Handler: handlers/get_movie.get
       Policies: AmazonDynamoDBFullAccess
       Events:
@@ -38,6 +41,7 @@ Resources:
   UpdateMovieFunction:
     Type: AWS::Serverless::Function
     Properties:
+      Runtime: python3.7
       Handler: handlers/update_movie.update
       Policies: AmazonDynamoDBFullAccess
       Events:
@@ -50,6 +54,7 @@ Resources:
   DeleteMovieFunction:
     Type: AWS::Serverless::Function
     Properties:
+      Runtime: python3.7
       Handler: handlers/delete_movie.delete
       Policies: AmazonDynamoDBFullAccess
       Events:
