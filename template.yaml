@@ -2,22 +2,17 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Resource definitions for the Movies RESTful API
 
-Globals:
-  Function:
-    Runtime: python3.7
-    Timeout: 180
-    Environment:
-      Variables:
-        DYNAMODB_TABLE: Movies
-        REGION_NAME: us-east-1
-
 Resources:
   CreateMovieFunction:
     Type: AWS::Serverless::Function
     Properties:
       Runtime: python3.7
       Handler: handlers/create_movie.create
+      CodeUri: .
       Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: Movies
       Events:
         Api:
           Type: Api
@@ -30,7 +25,11 @@ Resources:
     Properties:
       Runtime: python3.7
       Handler: handlers/get_movie.get
+      CodeUri: .
       Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: Movies
       Events:
         Api:
           Type: Api
@@ -43,7 +42,11 @@ Resources:
     Properties:
       Runtime: python3.7
       Handler: handlers/update_movie.update
+      CodeUri: .
       Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: Movies
       Events:
         Api:
           Type: Api
@@ -56,7 +59,11 @@ Resources:
     Properties:
       Runtime: python3.7
       Handler: handlers/delete_movie.delete
+      CodeUri: .
       Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: Movies
       Events:
         Api:
           Type: Api
@@ -64,9 +71,10 @@ Resources:
             Path: /v1/api/movies/{id}
             Method: DELETE
 
-  DynamoDBMoviesTable:
+  MoviesTable:
     Type: 'AWS::DynamoDB::Table'
     Properties:
+      TableName: Movies
       AttributeDefinitions:
         - AttributeName: movie-id
           AttributeType: S
@@ -76,4 +84,3 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
-

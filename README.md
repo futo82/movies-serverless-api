@@ -4,6 +4,7 @@ This example demostrates how to write a RESTful API in Python using the Serverle
 ## Prerequisites
 * [Python 3](https://www.python.org/)
 * [AWS CLI](https://aws.amazon.com/cli/)
+* [AWS SAM CLI] (https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 * [NodeJS](https://nodejs.org/en/)
 * [Serverless Framework](https://serverless.com/)
 
@@ -88,7 +89,7 @@ npm install serverless-offline serverless-dynamodb-local --save-dev
 This script will start DynamoDB, create the database table defined in serverless.yml,
 and start the API Gateway to expose the Movies CRUD endpoints on the localhost.
 ```
-./run.sh
+./run_sls.sh
 ```
 
 ### Deploy to AWS
@@ -110,12 +111,22 @@ aws s3 mb s3://<bucket-name>
 
 This command zips the code artifacts, uploads them to Amazon S3, and produces a packaged AWS SAM template file that's ready to be used.
 ```
-sam package --template-file sam.yaml --output-template-file packaged.yaml --s3-bucket <bucket-name>
+sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket <bucket-name>
 ```
 
 This command takes the packaged AWS SAM template file that was created and deploys the serverless application.
 ```
 aws cloudformation deploy --template-file ./packaged.yaml --stack-name movies-serverless-api-stack --capabilities CAPABILITY_IAM
+```
+
+This command return all cloud formation events in reverse chronological order.
+```
+aws cloudformation describe-stack-events --stack-name movies-serverless-api-stack
+```
+
+This command describes the resources in the cloud formation stack.
+```
+aws cloudformation describe-stack-resources --stack-name movies-serverless-api-stack
 ```
 
 This command delete the cloud formation stack and all of its resources.
