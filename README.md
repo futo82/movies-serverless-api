@@ -81,6 +81,11 @@ serverless invoke local --function delete_movie --data '{ "pathParameters" : { "
 ```
 
 ### Run API and DynamoDB locally
+This command install DynamoDB Local.
+```
+serverless dynamodb install
+```
+
 This command will install the plugins needed to run the Movies API on localhost.
 ```
 npm install serverless-offline serverless-dynamodb-local --save-dev
