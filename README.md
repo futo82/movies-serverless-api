@@ -56,7 +56,9 @@ curl -X PUT \
 curl -X DELETE http://hostname:port/v1/api/movies/19995 
 ```
 
-## Invoke the function locally but using DynamoDB on AWS
+## Serverless Framework
+
+### Invoke the function locally but using DynamoDB on AWS
 This command invokes the get_movie function locally and pass in the data as the event.
 ```
 serverless invoke local --function get_movie --data '{ "pathParameters" : { "id" : "1000" } }'
@@ -77,7 +79,7 @@ This command invokes the delete_movie function locally and pass in the data as t
 serverless invoke local --function delete_movie --data '{ "pathParameters" : { "id" : "1000" } }'
 ```
 
-## Run API and DynamoDB locally
+### Run API and DynamoDB locally
 This command will install the plugins needed to run the Movies API on localhost.
 ```
 npm install serverless-offline serverless-dynamodb-local --save-dev
@@ -89,7 +91,7 @@ and start the API Gateway to expose the Movies CRUD endpoints on the localhost.
 ./run.sh
 ```
 
-## Deploy to AWS
+### Deploy to AWS
 This command is used when you have updated your Function, Event or Resource configuration in serverless.yml and you want to deploy that change (or multiple changes at the same time) to a particular stage in Amazon Web Services.
 ```
 serverless deploy --stage <dev|int|uat|prod> --verbose
@@ -98,6 +100,27 @@ serverless deploy --stage <dev|int|uat|prod> --verbose
 This command will remove the deployed service in the specified stage, defined in your current working directory, from the provider.
 ```
 serverless remove --stage <dev|int|uat|prod>
+```
+
+## AWS Serverless Application Model (SAM)
+This command creates the S3 bucket to upload artifacts.
+```
+aws s3 mb s3://<bucket-name>
+```
+
+This command zips the code artifacts, uploads them to Amazon S3, and produces a packaged AWS SAM template file that's ready to be used.
+```
+sam package --template-file sam.yaml --output-template-file packaged.yaml --s3-bucket <bucket-name>
+```
+
+This command takes the packaged AWS SAM template file that was created and deploys the serverless application.
+```
+aws cloudformation deploy --template-file ./packaged.yaml --stack-name movies-serverless-api-stack
+```
+
+This command delete the cloud formation stack and all of its resources.
+```
+aws cloudformation delete-stack --stack-name movies-serverless-api-stack
 ```
 
 ## Resources
