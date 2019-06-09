@@ -71,6 +71,28 @@ Resources:
             Path: /v1/api/movies/{id}
             Method: DELETE
 
+  ProcessMoviesStream:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: python3.7
+      Handler: handlers/movies_stream.process
+      Policies: 
+        - AWSLambdaDynamoDBExecutionRole
+        - AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: MoviesReplica
+      Events:
+        Stream:
+          Type: DynamoDB
+          Properties:
+            Stream:
+              'Fn::GetAtt':
+                - MoviesTable
+                - StreamArn
+            BatchSize: 10
+            StartingPosition: TRIM_HORIZON
+
   MoviesTable:
     Type: 'AWS::DynamoDB::Table'
     Properties:
@@ -82,5 +104,21 @@ Resources:
         - AttributeName: movie-id
           KeyType: HASH
       ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+
+  MoviesReplicaTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: MoviesReplica
+      AttributeDefinitions:
+        - AttributeName: movie-id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: movie-id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
