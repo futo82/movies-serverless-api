@@ -71,7 +71,7 @@ Resources:
             Path: /v1/api/movies/{id}
             Method: DELETE
 
-  ProcessMoviesStream:
+  ProcessMoviesStreamFunction:
     Type: AWS::Serverless::Function
     Properties:
       Runtime: python3.7
