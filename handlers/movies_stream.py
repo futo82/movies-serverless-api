@@ -23,6 +23,7 @@ def process(event, context):
                     ExpressionAttributeNames={ "#m": "movie-id" },
                     ConditionExpression="attribute_exists(#m)"
                 )
+                print("Successfully modified movie '" + get_key(record) + "'.")
             elif record['eventName'] == 'REMOVE':
                 table.delete_item(
                     Key={
